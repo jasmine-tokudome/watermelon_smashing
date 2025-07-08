@@ -12,7 +12,12 @@ function voiceSetup() {
 // キーボード入力をセットアップする
 function keySetup() {
     document.addEventListener("keydown", (event) => {
-
+        if (event.key === "ArrowUp" || event.key === "ArrowDown" || event.key === "ArrowLeft" || event.key === "ArrowRight"){
+            actionQueue.push(event.key.replace("Arrow",""));
+        }
+        if (event.key === " "){
+            actionQueue.push("Attack");
+        }
     });
 }
 
