@@ -3,6 +3,11 @@ function update(nowState, action) {
     const nextState = structuredClone(nowState);
     if (nextState.gameMode === "play") {
         // アクションに応じておばけの状態を更新
+        if (action === "Attack"){
+            nextState.obake.atack = true;
+        } else if (action === "Up" || action === "Down" || action === "Left" || action === "Right"){
+            nextState.obake.direction = action;
+        }
 
         // 何らかの声援を受けたらおばけのやる気を回復
         if (action) {
