@@ -18,6 +18,11 @@ function update(nowState, action) {
         nextState.obake.yaruki = Math.max(nextState.obake.yaruki - 1, 0);
 
         // やる気がなくなったら気まぐれに方向転換
+        if (nextState.obake.yaruki === 0){
+            nextState.obake.attack = false;
+            nextState.obake.direction = ["Up", "Down", "Left", "Right"][Math.floor(Math.random() * 4)];
+            nextState.obake.yaruki = 45;
+        }
 
         // おばけの移動
 
