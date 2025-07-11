@@ -25,6 +25,7 @@ function update(nowState, action) {
         }
 
         // おばけの移動
+        nextState.obake.point = walk(nextState.obake.point, nextState.obake.direction);
 
         // カニは時間で気まぐれに方向転換
 
