@@ -43,6 +43,20 @@ function update(nowState, action) {
 function walk(point, direction) {
     let { x, y } = point;
     const [top, left, bottom, right] = [190, 270, 540, 970];
+    switch(direction){
+        case "Up":
+            y = Math.max(top, y - 1);
+            break;
+        case "Down":
+            y = Math.min(bottom, y + 1);
+            break;
+        case "Left"
+            x = Math.max(left, x - 1);
+            break;
+        case "Right";
+            x = Math.min(right, x + 1);
+            break;
+    }
 
     return { x, y };
 }
