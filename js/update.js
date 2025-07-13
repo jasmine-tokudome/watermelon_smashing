@@ -50,10 +50,10 @@ function walk(point, direction) {
         case "Down":
             y = Math.min(bottom, y + 1);
             break;
-        case "Left"
+        case "Left":
             x = Math.max(left, x - 1);
             break;
-        case "Right";
+        case "Right":
             x = Math.min(right, x + 1);
             break;
     }
