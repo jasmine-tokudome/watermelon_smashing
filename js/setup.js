@@ -6,7 +6,22 @@ function setup() {
 
 // 音声認識をセットアップする
 function voiceSetup() {
-
+    SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = "ja-JP";
+    recognition.continuous = true;
+    //声を受け取った時の処理
+    recognition.onresult = (event) => {
+        const message = event.results[event.results.length - 1][0].transcript;
+        const keyword = getKeyWord(message);
+        commentQuete.push(message);
+        if (keyword === "Left" || keyword === "Right" || keyword === "Up" || keyword === "Down" || keyword === "Attack"){
+            actionQue.push(keyword);
+        } else {
+            actionQue.push("comment");
+        }
+    }
+    recognition.start()
 }
 
 // キーボード入力をセットアップする
