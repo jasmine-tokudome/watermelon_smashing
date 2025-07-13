@@ -15,7 +15,11 @@ function renderObake(obake, gameMode, counter) {
     obakeElement.setAttribute("x",x);
     obakeElement.setAttribute("y",y);
 
+    if (obake.atack && counter % 2){
+        obakeElement.setAttribute("href", "./images/Obake" + obake.direction + "2.png");
+    } else {
     obakeElement.setAttribute("href","./images/Obake" + obake.direction + "1.png");
+    }
 }
 
 // カニを描画する
