@@ -21,6 +21,12 @@ function voiceSetup() {
             actionQue.push("comment");
         }
     }
+    // 黙っていると勝手に終了するので再度起動する
+    recognition.onerror = (e) => {
+        if (e.error === "no-speech"){
+            voiceSetup();
+        }
+    }
     recognition.start()
 }
 
