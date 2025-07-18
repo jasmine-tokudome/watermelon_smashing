@@ -49,7 +49,17 @@ function getKeyWord(message) {
     const up_words = ["上", "うえ"];
     const down_words = ["下", "した"];
     const attack_words = ["今", "いま", "打て", "うて", "撃て", "打って", "撃って", "うって"];
-
+    if(includesVoice(left_words,message)){
+        return"Left";
+    } else if(includesVoice(right_words,message)){
+        return"Right";
+    } else if(includesVoice(up_words,message)){
+        return"Up";
+    } else if(includesVoice(down_words,message)){
+        return"Down";
+    } else if(includesVoice(attack_words,message)){
+        return"Attack";
+    }
     return "";
 }
 
