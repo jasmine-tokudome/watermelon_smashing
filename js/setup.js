@@ -65,6 +65,10 @@ function getKeyWord(message) {
 
 // 文章にキーワードが含まれているかどうか
 function includesVoice(words, message) {
-
+    for (let i = 0; i < words.length; i++){
+        if(message.includes(words[i])){
+            return true;
+        }
+    }
     return false;
 }
