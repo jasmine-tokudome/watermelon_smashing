@@ -27,6 +27,15 @@ function voiceSetup() {
             voiceSetup();
         }
     }
+    // 音声認識の状態に合わせて観客の熱気を切り替える
+    recognition.onend = () => {
+        document.querySelector("#theater").classList.add("closed");
+        document.querySelector("#audience").classList.add("closed");
+        recognition.onaudiostart = () => {
+            document.querySelector("#theater").classList.remove("closed");
+            document.querySelector("#audience").classList.remove("closed");
+        }
+    }
     recognition.start()
 }
 
