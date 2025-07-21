@@ -61,6 +61,9 @@ function renderComment(comment) {
         const y = 650 + Math.random() * 150;
 
         // 画面にコメントを表示する
+        const text = createText(comment, x, y);
+        const comments = document.querySelector("#comments");
+        comments.appendChild(text);
 
         // 画面に吹き出しを表示する
 
