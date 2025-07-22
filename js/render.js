@@ -66,6 +66,9 @@ function renderComment(comment) {
         comments.appendChild(text);
 
         // 画面に吹き出しを表示する
+        const balloons = document.querySelector("#balloons");
+        const balloon = createBalloon(text, color);
+        balloons.appendChild(balloon);
 
         // 3秒後に消す
 
