@@ -71,6 +71,10 @@ function renderComment(comment) {
         balloons.appendChild(balloon);
 
         // 3秒後に消す
+        setTimeout(() => {
+            text.remove();
+            balloon.remove();
+        }, 3000);
 
         console.log(comment);
     }
