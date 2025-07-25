@@ -28,6 +28,9 @@ function update(nowState, action) {
         nextState.obake.point = walk(nextState.obake.point, nextState.obake.direction);
 
         // カニは時間で気まぐれに方向転換
+        if (nextState.counter % 25 === 0){
+            nextState.kani.direction = ["Up", "Down", "Left", "Right"][Math.floor(Math.random() * 4)];
+        }
 
         // カニの移動
 
