@@ -33,6 +33,7 @@ function update(nowState, action) {
         }
 
         // カニの移動
+        nextState.kani.point = walk(nextState.kani.point, nextState.kani.direction);
 
         // ゲームの状態をチェック
 
