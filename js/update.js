@@ -36,6 +36,7 @@ function update(nowState, action) {
         nextState.kani.point = walk(nextState.kani.point, nextState.kani.direction);
 
         // ゲームの状態をチェック
+        nextState.gameMode = check(nextState.obake, nextState.kani, nextState.suika);
 
         nextState.counter++;
     }
