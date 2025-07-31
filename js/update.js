@@ -79,7 +79,14 @@ function check(obake, kani, suika) {
 
 // カニとの当たり判定
 function hitKani(obake, kani) {
+    const dx = kani.point.x - obake.point.x;
+    const dy = kani.point.y - obake.point.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    if (distance < 60){
+        return true;
+    } else {
     return false;
+    }
 }
 
 // スイカとの当たり判定
