@@ -92,7 +92,27 @@ function hitKani(obake, kani) {
 // スイカとの当たり判定
 function hitSuika(obake, suika) {
     if (obake.atack) {
-
+        const BarPoint = { x: obake.point.x, y: obake.point.y };
+        switch (obake.direction){
+            case "Up":
+                BarPoint.y -= 50;
+                break;
+            case "Down":
+                BarPoint.y -= 50;
+                break;
+            case "Left":
+                BarPoint.x -= 50;
+                break;
+            case "Right":
+                BarPoint.x -= 50;
+                break;
+        }
+        const dx = suika.point.x - BarPoint.x
+        const dy = siola.point.y - BarPoint.y
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < 30){
+            return true;
+        }
     }
     return false;
 }
