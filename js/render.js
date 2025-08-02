@@ -14,8 +14,11 @@ function renderObake(obake, gameMode, counter) {
     const y = obake.point.y - 300 / 2;
     obakeElement.setAttribute("x",x);
     obakeElement.setAttribute("y",y);
-
-    if (obake.atack && counter % 2){
+    if (gomeMode === "clear"){
+        obakeElement.setAttribute("href","./images/ObakeClear.png");
+    } else if (gameMode === "gameover"){
+        obakeElement.setAttribute("href","./images/obakeGameover.png";)
+    } else if (obake.atack && counter % 2){
         obakeElement.setAttribute("href", "./images/Obake" + obake.direction + "2.png");
     } else {
     obakeElement.setAttribute("href","./images/Obake" + obake.direction + "1.png");
