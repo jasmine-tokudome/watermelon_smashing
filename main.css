@@ -1,0 +1,80 @@
+body {
+    display: flex;
+    flex-flow: column;
+    place-content: center;
+    place-items: center;
+    background-color: black;
+    margin: 0;
+}
+
+#container {
+    position: relative;
+}
+
+#audience {
+    animation: buru .2s infinite;
+    filter: blur(3px);
+}
+
+#theater.closed {
+    filter: grayscale(100%);
+}
+
+#audience.closed {
+    display: none;
+}
+
+.gameover {
+    filter: invert(100%);
+}
+
+.play #obake {
+    animation: buru .3s infinite;
+}
+
+.play #kani {
+    animation: buru .1s infinite;
+}
+
+.comment {
+    animation: buru .1s infinite;
+}
+
+.psyllium {
+    animation: huerotator 3s infinite alternate;
+}
+
+/* 上下に振動させる */
+@keyframes buru {
+    /* 振動 */
+    0%{
+        transform: translate(0px,0px)
+    }
+
+    25%{
+        transform: translate(0px,1px)
+    }
+
+    50%{
+        transform: translate(0px,1px)
+    }
+
+    75%{
+        transform: translate(0px,0px)
+    }
+
+    100%{
+        transform: translate(0px,0px)
+    }
+}
+
+/* 色を変化させる */
+@keyframes huerotator {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
