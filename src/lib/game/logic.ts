@@ -1,5 +1,18 @@
-export const setup = () => { /* 初期設定 */ };
+//ロジックは計算に専念させる。DOM操作はtsx側のスタイルに担わせる。
 
-export const update = (state: any) => { /* 座標計算など */ };
+// 型定義（共通で使う）
+export interface Point {
+    x: number;
+    y: number;
+  }
+  export interface GameObject {
+    point: Point;
+  }
 
-export const render = (ctx: CanvasRenderingContext2D) => { /* 描画 */ };
+export const getKaniDisplayPosition = (kani: GameObject): Point => {
+return {
+      x: kani.point.x - 60 / 2,
+      y: kani.point.y - 40 / 2,
+    };
+};
+
