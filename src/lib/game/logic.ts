@@ -16,3 +16,12 @@ return {
     };
 };
 
+export const renderObake = (obake, gameMode, counter): POint => {
+  return {
+    x : obake.point.x - 300 / 2,
+    y : obake.point.y - 300 / 2,
+  }
+  const x = obake.point.x - 300 / 2;
+  const y = obake.point.y - 300 / 2;
+}
+
