@@ -3,6 +3,15 @@ export interface Point { x: number; y: number }
 export interface GameObject { point: Point; }
 export type GameMode = 'playing' | 'clear' | 'gameOver';
 
+// コメントの型定義
+export interface CommentData {
+  id: string;
+  text: string;
+  color: string
+  x: number;
+  y: number;
+}
+
 // 型定義（共通で使う）
 export interface Point {
     x: number;
