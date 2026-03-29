@@ -12,14 +12,10 @@ export interface CommentData {
   y: number;
 }
 
-// 型定義（共通で使う）
-export interface Point {
-    x: number;
-    y: number;
-  }
-  export interface GameObject {
-    point: Point;
-  }
+//　座標計算ロジック（中心から左上座標を算出）
+export const getObakePos = (obake: GameObject) => ({ x: obake.point.x - 150, y: obake.point.y - 150 });
+export const getKaniPos = (kani: GameObject) => ({ x: kani.point.x - 30, y: kani.point.x - 30});
+export const getSuikaPos = (suika: GameObject) => ({x: suika.point.x - 40, y: suika.point.y - 40});
 
 export const getKaniDisplayPosition = (kani: GameObject): Point => {
 return {
