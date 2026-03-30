@@ -24,11 +24,14 @@ return {
     };
 };
 
-export const getObakeDisplayPosition = (obake, gameMode, counter): Point => {
+// コメントデータ生成ロジック
+export const createCommentData = (text: string): CommentData => {
+  const COLORS = ["violet", "pink", "gold", "greenyellow", "lightskyblue"];
   return {
-    x : obake.point.x - 300 / 2,
-    y : obake.point.y - 300 / 2,
-  }
-}
-
-
+    id: Math.random().toString(36).substring(7), // 一意のIDを付与
+    text,
+    color: COLORS[Math.floor(Math.random() * COLORS.length)],
+    x: 300 + Math.random() * 640,
+    y: 650 + Math.random() * 150,
+  };
+};
