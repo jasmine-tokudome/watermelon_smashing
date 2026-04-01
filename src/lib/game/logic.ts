@@ -35,3 +35,4 @@ export const createCommentData = (text: string): CommentData => {
     y: 650 + Math.random() * 150,
   };
 };
+
