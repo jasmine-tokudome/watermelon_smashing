@@ -1,13 +1,41 @@
-//ロジックは計算に専念させる。DOM操作はtsx側のスタイルに担わせる。
-export interface Point { x: number; y: number }
-export interface GameObject { point: Point; }
-export type GameMode = 'playing' | 'clear' | 'gameOver';
+// src/lib/game/logic.ts
 
-// コメントの型定義
+// ==========================================
+// 1. 型定義（データの設計図）
+// ==========================================
+export interface Point { x: number; y: number; }
+export type Direction = 'Up' | 'Down' | 'Left' | 'Right';
+export type GameMode = 'play' | 'clear' | 'gameover';
+export type Action = Direction | 'Attack' | null;
+
+export interface Obake {
+  point: Point;
+  direction: Direction;
+  attack: boolean;
+  yaruki: number;
+}
+
+export interface Kani {
+  point: Point;
+  direction: Direction;
+}
+
+export interface Suika {
+  point: Point;
+}
+
+export interface GameState {
+  obake: Obake;
+  kani: Kani;
+  suika: Suika;
+  gameMode: GameMode;
+  counter: number;
+}
+
 export interface CommentData {
   id: string;
   text: string;
-  color: string
+  color: string;
   x: number;
   y: number;
 }
