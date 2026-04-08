@@ -40,6 +40,25 @@ export interface CommentData {
   y: number;
 }
 
+// ==========================================
+// 2. 描画用ロジック（表示座標やデータの計算）
+// ==========================================
+// ※GameObjectをより正確な各キャラクターの型に更新しました
+export const getObakePos = (obake: Obake): Point => ({ x: obake.point.x - 150, y: obake.point.y - 150 });
+export const getKaniPos = (kani: Kani): Point => ({ x: kani.point.x - 30, y: kani.point.y - 20 });
+export const getSuikaPos = (suika: Suika): Point => ({ x: suika.point.x - 40, y: suika.point.y - 40 });
+
+export const createCommentData = (text: string): CommentData => {
+  const COLORS = ["violet", "pink", "gold", "greenyellow", "lightskyblue"];
+  return {
+    id: Math.random().toString(36).substring(7),
+    text,
+    color: COLORS[Math.floor(Math.random() * COLORS.length)],
+    x: 300 + Math.random() * 640,
+    y: 650 + Math.random() * 150,
+  };
+};
+
 //　座標計算ロジック（中心から左上座標を算出）
 export const getObakePos = (obake: GameObject) => ({ x: obake.point.x - 150, y: obake.point.y - 150 });
 export const getKaniPos = (kani: GameObject) => ({ x: kani.point.x - 30, y: kani.point.x - 30});
