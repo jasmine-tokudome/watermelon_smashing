@@ -59,6 +59,22 @@ export const createCommentData = (text: string): CommentData => {
   };
 };
 
+// おばけの画像パスを決定する純粋関数
+export const getObakeImagePath = (obake: Obake, gameMode: GameMode, counter: number): string => {
+  if (gameMode === "clear") {
+    return "/images/ObakeClear.png";
+  }
+  if (gameMode === "gameover") {
+    return "/images/ObakeGameover.png";
+  }
+  // 攻撃中かつ偶数フレームの場合はアニメーション用の画像（例：ObakeUp2.png）
+  if (obake.attack && counter % 2 === 0) {
+    return `/images/Obake${obake.direction}2.png`;
+  }
+  // 通常時の画像（例：ObakeUp1.png）
+  return `/images/Obake${obake.direction}1.png`;
+};
+
 // ==========================================
 // 3. 更新用ロジック（ゲームの状態変化）
 // ==========================================
