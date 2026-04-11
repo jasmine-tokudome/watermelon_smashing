@@ -1,13 +1,17 @@
 // src/components/GameBoard.tsx
 'use client';
 
-import { GameObject, GameMode, CommentData, getObakePos, getKaniPos, getSuikaPos } from '@/lib/game/logic';
+import { 
+    GameObject, GameMode, CommentData, 
+    getObakePos, getKaniPos, getSuikaPos, getObakeImagePath 
+  } from '@/lib/game/logic';
 
 interface Props {
     obake: GameObject;
     kani: GameObject;
     suika: GameObject;
     gameMode: GameMode;
+    counter: number;
     comments: CommentData[];
 }
 
