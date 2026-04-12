@@ -2,20 +2,20 @@
 'use client';
 
 import { 
-    GameObject, GameMode, CommentData, 
+    Obake, Kani, Suika, GameMode, CommentData, 
     getObakePos, getKaniPos, getSuikaPos, getObakeImagePath 
   } from '@/lib/game/logic';
 
-interface Props {
-    obake: GameObject;
-    kani: GameObject;
-    suika: GameObject;
+  interface Props {
+    obake: Obake;
+    kani: Kani;
+    suika: Suika;
     gameMode: GameMode;
     counter: number;
     comments: CommentData[];
-}
+  }
 
-export default function GameBoard({ obake, kani, suika, gameMode, comments }: Props) {
+  export default function GameBoard({ obake, kani, suika, gameMode, counter, comments }: Props){
     // 1. ロジックを使って表示座標を計算
     const obakePos = getObakePos(obake);
     const kaniPos = getKaniPos(kani);
