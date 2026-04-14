@@ -4,7 +4,7 @@
 import { 
     Obake, Kani, Suika, GameMode, CommentData, 
     getObakePos, getKaniPos, getSuikaPos, getObakeImagePath 
-  } from '@/lib/game/game/logic';
+  } from '@/lib/game/logic';
 
   interface Props {
     obake: Obake;
