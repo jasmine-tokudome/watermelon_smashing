@@ -153,5 +153,21 @@ export const updateState = (nowState: GameState, action: Action): GameState => {
     nextState.counter++;
   }
 
+  // ==========================================
+  // 4. 音声認識用のキーワード判定ロジック
+  // ==========================================
+  export const includesVoice = (words: string[], message: string): boolean => {
+    return words.some(word => message.includes(word));
+  };
+
+  export const getKeyWord = (message: string): Action | "comment" => {
+    if (includesVoice(["左", "ひだり"], message)) return "Left";
+    if (includesVoice(["右", "みぎ"], message)) return "Right";
+    if (includesVoice(["上", "うえ"], message)) return "Up";
+    if (includesVoice(["下", "した"], message)) return "Down";
+    if (includesVoice(["今", "いま", "打て", "うて", "撃て", "打って", "撃って", "うって"], message)) return "Attack";
+    return "comment";
+  };
+
   return nextState;
 };
