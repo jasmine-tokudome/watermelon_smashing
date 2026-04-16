@@ -152,8 +152,10 @@ export const updateState = (nowState: GameState, action: Action): GameState => {
     nextState.gameMode = checkMode(nextState.obake, nextState.kani, nextState.suika);
     nextState.counter++;
   }
+  return nextState;
+};
 
-  // ==========================================
+ // ==========================================
   // 4. 音声認識用のキーワード判定ロジック
   // ==========================================
   export const includesVoice = (words: string[], message: string): boolean => {
@@ -168,6 +170,3 @@ export const updateState = (nowState: GameState, action: Action): GameState => {
     if (includesVoice(["今", "いま", "打て", "うて", "撃て", "打って", "撃って", "うって"], message)) return "Attack";
     return "comment";
   };
-
-  return nextState;
-};
