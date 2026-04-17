@@ -26,7 +26,7 @@ import {
     <svg id="field" className={gameMode} width="100%" height="800">
       
       {/* おばけの描画 */}
-      <image id="obake" href="/images/obake.png" x={obakePos.x} y={obakePos.y} width="300" height="300" />
+      <image id="obake" href={obakeImage} x={obakePos.x} y={obakePos.y} width="300" height="300" />
 
       {/* カニの描画 */}
       <image id="kani" href="/images/kani.png" x={kaniPos.x} y={kaniPos.y} width="60" height="40" />

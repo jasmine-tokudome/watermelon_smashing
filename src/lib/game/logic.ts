@@ -40,13 +40,27 @@ export interface CommentData {
   y: number;
 }
 
+
 // ==========================================
 // 2. 描画用ロジック（表示座標やデータの計算）
 // ==========================================
-// ※GameObjectをより正確な各キャラクターの型に更新しました
 export const getObakePos = (obake: Obake): Point => ({ x: obake.point.x - 150, y: obake.point.y - 150 });
 export const getKaniPos = (kani: Kani): Point => ({ x: kani.point.x - 30, y: kani.point.y - 20 });
 export const getSuikaPos = (suika: Suika): Point => ({ x: suika.point.x - 40, y: suika.point.y - 40 });
+
+// ★ おばけの画像パスを決定する純粋関数
+export const getObakeImagePath = (obake: Obake, gameMode: GameMode, counter: number): string => {
+  if (gameMode === "clear") {
+    return "/images/ObakeClear.png";
+  }
+  if (gameMode === "gameover") {
+    return "/images/ObakeGameover.png";
+  }
+  if (obake.attack && counter % 2 === 0) {
+    return `/images/Obake${obake.direction}2.png`;
+  }
+  return `/images/Obake${obake.direction}1.png`;
+};
 
 export const createCommentData = (text: string): CommentData => {
   const COLORS = ["violet", "pink", "gold", "greenyellow", "lightskyblue"];
@@ -59,21 +73,6 @@ export const createCommentData = (text: string): CommentData => {
   };
 };
 
-// おばけの画像パスを決定する純粋関数
-export const getObakeImagePath = (obake: Obake, gameMode: GameMode, counter: number): string => {
-  if (gameMode === "clear") {
-    return "/images/ObakeClear.png";
-  }
-  if (gameMode === "gameover") {
-    return "/images/ObakeGameover.png";
-  }
-  // 攻撃中かつ偶数フレームの場合はアニメーション用の画像（例：ObakeUp2.png）
-  if (obake.attack && counter % 2 === 0) {
-    return `/images/Obake${obake.direction}2.png`;
-  }
-  // 通常時の画像（例：ObakeUp1.png）
-  return `/images/Obake${obake.direction}1.png`;
-};
 
 // ==========================================
 // 3. 更新用ロジック（ゲームの状態変化）
@@ -152,21 +151,23 @@ export const updateState = (nowState: GameState, action: Action): GameState => {
     nextState.gameMode = checkMode(nextState.obake, nextState.kani, nextState.suika);
     nextState.counter++;
   }
+
   return nextState;
 };
 
- // ==========================================
-  // 4. 音声認識用のキーワード判定ロジック
-  // ==========================================
-  export const includesVoice = (words: string[], message: string): boolean => {
-    return words.some(word => message.includes(word));
-  };
 
-  export const getKeyWord = (message: string): Action | "comment" => {
-    if (includesVoice(["左", "ひだり"], message)) return "Left";
-    if (includesVoice(["右", "みぎ"], message)) return "Right";
-    if (includesVoice(["上", "うえ"], message)) return "Up";
-    if (includesVoice(["下", "した"], message)) return "Down";
-    if (includesVoice(["今", "いま", "打て", "うて", "撃て", "打って", "撃って", "うって"], message)) return "Attack";
-    return "comment";
-  };
+// ==========================================
+// 4. 音声認識用のキーワード判定ロジック
+// ==========================================
+export const includesVoice = (words: string[], message: string): boolean => {
+  return words.some(word => message.includes(word));
+};
+
+export const getKeyWord = (message: string): Action | "comment" => {
+  if (includesVoice(["左", "ひだり"], message)) return "Left";
+  if (includesVoice(["右", "みぎ"], message)) return "Right";
+  if (includesVoice(["上", "うえ"], message)) return "Up";
+  if (includesVoice(["下", "した"], message)) return "Down";
+  if (includesVoice(["今", "いま", "打て", "うて", "撃て", "打って", "撃って", "うって"], message)) return "Attack";
+  return "comment";
+};
