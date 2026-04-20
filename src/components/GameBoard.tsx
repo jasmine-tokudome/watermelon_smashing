@@ -21,6 +21,8 @@ import {
     const kaniPos = getKaniPos(kani);
     const suikaPos = getSuikaPos(suika);
 
+    const obakeImage = getObakeImagePath(obake);
+
     // 2. 宣言的なUIの構築（JSX）
   return (
     <svg id="field" className={gameMode} width="100%" height="800">
