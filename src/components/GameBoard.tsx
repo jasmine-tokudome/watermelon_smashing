@@ -21,7 +21,7 @@ import {
     const kaniPos = getKaniPos(kani);
     const suikaPos = getSuikaPos(suika);
 
-    const obakeImage = getObakeImagePath(obake);
+    const obakeImage = getObakeImagePath(obake,gameMode,counter);
 
     // 2. 宣言的なUIの構築（JSX）
   return (
